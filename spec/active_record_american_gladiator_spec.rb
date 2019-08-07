@@ -23,6 +23,10 @@ describe "ActiveRecord American Gladiator" do
 
       # Changeable Start
       items = Item.where("name LIKE ?", "%powerball%")
+<<<<<<< HEAD
+=======
+      # items = Item.includes('Power')
+>>>>>>> 407e476cc0e31073d27af466c798cacae6fa389e
       # Changeable End
 
       expect(items.count).to eq(2)
@@ -72,6 +76,13 @@ describe "ActiveRecord American Gladiator" do
       nitro.orders.create
 
       # Changeable Start
+<<<<<<< HEAD
+=======
+      # active_users = User.all.select do |user|
+      #   user.orders.present?
+      # end
+
+>>>>>>> 407e476cc0e31073d27af466c798cacae6fa389e
       active_users = User.joins(:orders).distinct
       # Changeable End
 
@@ -91,6 +102,14 @@ describe "ActiveRecord American Gladiator" do
       order_3        = Order.create(items: [football])
 
       # Changeable Start
+<<<<<<< HEAD
+=======
+      # orders = Order.all.select do |order|
+      #   order.items.include?(football) || order.items.include?(wrestling_ring)
+      # end
+
+      # orders = Order.joins(:order_items).where(order_items.includes('football' || 'wrestling'))
+>>>>>>> 407e476cc0e31073d27af466c798cacae6fa389e
       orders = Order.joins(:order_items).where(order_items: {item: [wrestling_ring, football]})
       # Changeable End
 
@@ -112,6 +131,13 @@ describe "ActiveRecord American Gladiator" do
       order_5 = Order.create(created_at: two_weeks_ago + 2.days)
 
       # Changeable Start
+<<<<<<< HEAD
+=======
+      # orders = Order.all.select do |order|
+      #   order.created_at >= two_weeks_ago && order.created_at <= last_week
+      # end
+
+>>>>>>> 407e476cc0e31073d27af466c798cacae6fa389e
       orders = Order.where('created_at BETWEEN ? and ?', two_weeks_ago, last_week)
       # Changeable End
 
